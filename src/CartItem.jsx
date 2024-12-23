@@ -19,10 +19,11 @@ const CartItem = ({ onContinueShopping }) => {
 
 
   const handleIncrement = (item) => {
+    dispatch.incrementCounter();
   };
 
   const handleDecrement = (item) => {
-   
+   dispatch.decrementCounter();
   };
 
   const handleRemove = (item) => {
