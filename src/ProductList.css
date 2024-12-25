@@ -62,6 +62,16 @@ body {
     align-items: center;
     justify-content: center;
 }
+.checkout-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    padding: 20px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 
 /* Product Card */
 .product-card {
