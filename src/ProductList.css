@@ -263,3 +263,8 @@ body {
         text-align: center; /* Align text to the center */
       }
   }
+
+.product-button.in-cart {
+    background-color: #2c4c2e; /* Darker green for items in cart */
+    cursor: not-allowed;
+}

@@ -9,7 +9,7 @@ function ProductList({ onClose }) {
     const dispatch = useDispatch();
     const [showCart, setShowCart] = useState(false);
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
-
+    const cartItems = useSelector(state => state.cart.items); // Add this line to get cart items
 
     const handleAddToCart = (product) => {
         dispatch(addItem(product));
@@ -54,6 +54,11 @@ function ProductList({ onClose }) {
     };
 
     const totalQuantity = useSelector((state) => state.cart.totalQuantity);  // Add this line
+
+    const isItemInCart = (productName) => {
+        return cartItems.some(item => item.name === productName);
+    };
+
     return (
         <div>
             <div className="navbar" style={styleObj}>
@@ -88,7 +93,21 @@ function ProductList({ onClose }) {
                                         <img className="product-image" src={plant.image} alt={plant.name} />
                                         <div className="product-title">{plant.name}</div>
                                         <div className="product-title">{plant.cost}</div>
-                                        <button className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
+                                        {isItemInCart(plant.name) ? (
+                                            <button 
+                                                className="product-button in-cart"
+                                                disabled
+                                            >
+                                                Already in the cart
+                                            </button>
+                                        ) : (
+                                            <button 
+                                                className="product-button"
+                                                onClick={() => handleAddToCart(plant)}
+                                            >
+                                                Add to Cart
+                                            </button>
+                                        )}
                                     </div>
                                 ))}
                             </div>
