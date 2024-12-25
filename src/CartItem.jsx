@@ -41,8 +41,13 @@ const CartItem = () => {
 
   return (
     <div className="cart-container">
-      {calculateTotalAmount()== 0 ? <h2 style={{ color: 'black' }}>The cart is empty</h2> :
-      <h2 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount()}</h2> }
+      {calculateTotalAmount() === 0 ? (
+        <h2 className="cart-total-amount empty">The cart is empty</h2>
+      ) : (
+        <h2 className="cart-total-amount">
+          Total Cart Amount: ${calculateTotalAmount().toFixed(2)}
+        </h2>
+      )}
       <div>
         {cart.map(item => (
           <div className="cart-item" key={item.name}>
@@ -51,18 +56,32 @@ const CartItem = () => {
               <div className="cart-item-name">{item.name}</div>
               <div className="cart-item-cost">{item.cost}</div>
               <div className="cart-item-quantity">
-                <button className="cart-item-button cart-item-button-dec" onClick={() => handleDecrement(item)}>-</button>
+                <button 
+                  className="cart-item-button" 
+                  onClick={() => handleDecrement(item)}
+                  aria-label="Decrease quantity"
+                >
+                  -
+                </button>
                 <span className="cart-item-quantity-value">{item.quantity}</span>
-                <button className="cart-item-button cart-item-button-inc" onClick={() => handleIncrement(item)}>+</button>
+                <button 
+                  className="cart-item-button" 
+                  onClick={() => handleIncrement(item)}
+                  aria-label="Increase quantity"
+                >
+                  +
+                </button>
               </div>
-              <div className="cart-item-total">Total: ${calculateTotalCost(item)}</div>
-              <button className="cart-item-delete" onClick={() => handleRemove(item)}>Delete</button>
+              <div className="cart-item-total">
+                Total: ${calculateTotalCost(item).toFixed(2)}
+              </div>
+              <button className="cart-item-delete" onClick={() => handleRemove(item)}>
+                Remove
+              </button>
             </div>
           </div>
         ))}
       </div>
-      <div style={{ marginTop: '20px', color: 'black' }} className='total_cart_amount'></div>
-     
     </div>
   );
 };
