@@ -170,8 +170,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 650px;
     font-size: 19px;
+    flex:3,
 }
 .cart{
     color: white;

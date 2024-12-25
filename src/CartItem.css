@@ -199,18 +199,20 @@
   
     .cart-item-quantity {
       margin-top: 10px; /* Add margin top for spacing */
+      align-self: 'center';
     }
   }
   
 
   .cart-container{
-    /* text-align: center; */
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
     gap: 20px;
     margin-top: 20px;
+    padding-top: 20px,
+    
    }
    .total_cart_amount{
     font-size: 20px;
